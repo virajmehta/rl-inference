@@ -1,4 +1,5 @@
 import gym
+import barl.envs
 
 SPARSE_MOUNTAIN_CAR = "SparseMountainCar"
 HALF_CHEETAH_RUN = "HalfCheetahRun"
