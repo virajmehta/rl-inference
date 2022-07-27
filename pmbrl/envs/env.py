@@ -7,6 +7,7 @@ HALF_CHEETAH_FLIP = "HalfCheetahFlip"
 ANT_MAZE = "AntMaze"
 DM_REACHER = "DeepMindReacher"
 DM_CATCH = "DeepMindCatch"
+BETA_ROTATION = "newbetarotation-v0"
 
 
 class GymEnv(object):
@@ -88,5 +89,8 @@ class GymEnv(object):
             from pmbrl.envs.dm_wrapper import DeepMindWrapper
 
             return DeepMindWrapper(domain="reacher", task="easy")
+        # elif env_name == BETA_ROTATION:
+        #     from fusion_control.envs.gym_env import BetaRotationTrackingGymEnv
+        #     return BetaRotationTrackingGymEnv()
         else:
             return gym.make(env_name)

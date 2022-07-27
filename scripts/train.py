@@ -1,6 +1,7 @@
 # pylint: disable=not-callable
 # pylint: disable=no-member
 
+from copy import deepcopy
 import sys
 import time
 import pathlib
@@ -127,5 +128,8 @@ if __name__ == "__main__":
     parser.add_argument("--strategy", type=str, default="information")
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
-    config = get_config(args)
-    main(config)
+    for i in range(5):
+        these_args = deepcopy(args)
+        these_args.logdir = these_args.logdir + f'_{i}'
+        config = get_config(these_args)
+        main(config)

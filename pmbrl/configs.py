@@ -40,6 +40,8 @@ def get_config(args):
         config = BARLReacherConfig()
     elif args.config_name == BETA_TRACKING_CONFIG:
         config = BetaTrackingConfig()
+    elif args.config_name == BETA_ROTATION_CONFIG:
+        config = BetaRotationConfig()
     else:
         raise ValueError("`{}` is not a valid config ID".format(args.config_name))
 
@@ -252,7 +254,7 @@ class CartpoleConfig(Config):
         self.n_train_epochs = 100
         self.n_seed_episodes = 1
         self.expl_scale = 1.0
-        self.n_episodes = 30
+        self.n_episodes = 100
         self.ensemble_size = 25
         self.record_every = None
 
@@ -314,7 +316,7 @@ class BetaRotationConfig(Config):
     def __init__(self):
         super().__init__()
         self.logdir = "beta_rotation"
-        self.env_name = "betanrotation-v0"
+        self.env_name = "newbetanrotation-v0"
         self.max_episode_len = 10
         self.n_train_epochs = 100
         self.n_seed_episodes = 1
