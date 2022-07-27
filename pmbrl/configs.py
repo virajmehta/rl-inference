@@ -253,7 +253,7 @@ class CartpoleConfig(Config):
         self.max_episode_len = 25
         self.n_train_epochs = 100
         self.n_seed_episodes = 1
-        self.expl_scale = 1.0
+        self.expl_scale = 0.1
         self.n_episodes = 100
         self.ensemble_size = 25
         self.record_every = None
@@ -272,18 +272,6 @@ class PendulumConfig(Config):
         self.ensemble_size = 25
         self.record_every = None
 
-class PendulumConfig(Config):
-    def __init__(self):
-        super().__init__()
-        self.logdir = "pendulum"
-        self.env_name = "bacpendulum-v0"
-        self.max_episode_len = 200
-        self.n_train_epochs = 100
-        self.n_seed_episodes = 1
-        self.expl_scale = 1.0
-        self.n_episodes = 30
-        self.ensemble_size = 25
-        self.record_every = None
 
 class BARLReacherConfig(Config):
     def __init__(self):
@@ -291,11 +279,18 @@ class BARLReacherConfig(Config):
         self.logdir = "barl_reacher"
         self.env_name = "bacreacher-v0"
         self.max_episode_len = 50
-        self.n_train_epochs = 100
-        self.n_seed_episodes = 1
-        self.expl_scale = 1.0
+        self.n_train_epochs = 500
+        self.n_seed_episodes = 5
+        self.expl_scale = 0.1
         self.n_episodes = 100
-        self.ensemble_size = 25
+        self.batch_size = 50
+        self.plan_horizon = 30
+        self.optimisation_iters = 5
+        self.n_candidates = 500
+        self.top_canditates = 50
+        self.use_mean = True
+        self.ensemble_size = 15
+        self.action_repeat = 4
         self.record_every = None
 
 
@@ -307,7 +302,7 @@ class BetaTrackingConfig(Config):
         self.max_episode_len = 15
         self.n_train_epochs = 100
         self.n_seed_episodes = 1
-        self.expl_scale = 1.0
+        self.expl_scale = 0.1
         self.n_episodes = 100
         self.ensemble_size = 25
         self.record_every = None
@@ -316,7 +311,7 @@ class BetaRotationConfig(Config):
     def __init__(self):
         super().__init__()
         self.logdir = "beta_rotation"
-        self.env_name = "newbetanrotation-v0"
+        self.env_name = "newbetarotation-v0"
         self.max_episode_len = 10
         self.n_train_epochs = 100
         self.n_seed_episodes = 1
